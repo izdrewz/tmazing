@@ -1,6 +1,6 @@
 # Tmazing Uni Hub
 
-A local-first university dashboard for deadlines, personal goals, module-organised source storage, draft source checking, and Harvard-style reference support.
+A local-first university dashboard for deadlines, personal goals, module-organised source storage, draft source checking, Harvard-style reference support, and study-session file exports.
 
 ## What it includes
 
@@ -27,11 +27,19 @@ A local-first university dashboard for deadlines, personal goals, module-organis
 - Inline citations can include the source location, for example page or paragraph
 - Automatically generated bibliography, alphabetised by author/title
 - Ignore dictionary so common words like `the`, `and`, `of`, or any custom words do not become source links
+- Daily study-goal prompt when you open the app
+- Deadline reminder if active deadlines are due within 7 days
+- Monday weekly study review
+- End-session vault that compiles sources/draft/session notes and lets you choose keep, merge, or delete for files touched in the session
+- Local Markdown and JSON downloads for session files
+- GitHub-library pack exports that can be uploaded to the repo's `/library` folder
 - Export/import backup as JSON
 
 ## Important privacy note
 
 Your study data is stored in your browser using `localStorage`. The GitHub repo stores the app code, not your private source library or drafts.
+
+The app cannot silently save files into GitHub or choose folders without your action. At the end of a session it downloads local files and creates GitHub-ready library packs. You decide what to save locally and what to upload to GitHub.
 
 Export a backup regularly if your source library becomes important.
 
@@ -51,6 +59,27 @@ Export a backup regularly if your source library becomes important.
 9. Check the matching source snippet and page/paragraph location.
 10. Choose **Add citation** for the correct source.
 11. Copy the cited draft and bibliography.
+12. Use **End session** when you finish studying.
+13. Review/edit the compiled session notes, name the files, choose whether sources should be kept, merged, or deleted, then save the downloaded session files.
+
+## End-session file workflow
+
+At the end of a study session, the app can create:
+
+- a local Markdown session file
+- a JSON GitHub-library pack
+- a Markdown GitHub-library pack
+
+The GitHub-library pack is intended for manual upload to the repo's `/library` folder.
+
+Suggested GitHub library folders:
+
+- `library/E104/block-1/`
+- `library/E104/block-2/`
+- `library/K102/unit-3/`
+- `library/session-exports/`
+
+Do not upload private or copyrighted course materials unless you are allowed to store them in a public GitHub repository.
 
 ## File handling
 
