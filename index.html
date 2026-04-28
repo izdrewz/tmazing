@@ -92,13 +92,14 @@
           <input id="sourcePages" type="text" placeholder="pp. 12–18, section 2.1...">
         </label>
         <label class="full-span">
-          Upload text-like file
-          <input id="sourceFile" type="file" accept=".txt,.md,.csv,.html,.htm,.json,.rtf">
-          <span class="help-text">For PDFs/Word files, paste the relevant text below until PDF/DOCX parsing is added.</span>
+          Upload source file
+          <input id="sourceFile" type="file" accept=".pdf,.docx,.txt,.md,.csv,.html,.htm,.json,.rtf">
+          <span class="help-text">Now supports PDF and DOCX text extraction in the browser. Scanned image-only PDFs may still need manual paste.</span>
+          <span id="fileStatus" class="help-text parser-status"></span>
         </label>
         <label class="full-span">
           Source text content
-          <textarea id="sourceText" rows="8" placeholder="Paste source text here so the checker can search it. More text = better matching."></textarea>
+          <textarea id="sourceText" rows="8" placeholder="Upload a file or paste source text here. More text = better matching."></textarea>
         </label>
         <button type="submit">Add source to library</button>
       </form>
@@ -106,7 +107,7 @@
       <div class="library-tools">
         <label>
           Search your source library
-          <input id="librarySearch" type="search" placeholder="Search a keyword, quote, author, module, or unit...">
+          <input id="librarySearch" type="search" placeholder="Search a keyword, quote, author, module, unit, page, or paragraph...">
         </label>
         <label>
           Module filter
@@ -145,7 +146,7 @@
               <option value="word">Words only</option>
             </select>
           </label>
-          <p class="help-text">Click a highlighted word to see matching source snippets. Use “Add citation” to add an inline Harvard-style citation and bibliography entry.</p>
+          <p class="help-text">Hover or click a highlighted word to see matching source snippets with page/paragraph locations. Use “Add citation” to add an inline Harvard-style citation and bibliography entry.</p>
         </aside>
       </div>
 
@@ -223,6 +224,8 @@
     </article>
   </template>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
