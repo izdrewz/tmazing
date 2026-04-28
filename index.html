@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tmazing Uni Hub</title>
+  <meta name="description" content="University study dashboard with deadlines, goals, module source library, source checker, and Harvard reference helper.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Tmazing Uni Hub</p>
+      <h1>Deadlines, sources, drafts, and references in one place.</h1>
+      <p class="subtitle">Organise sources by module and unit/block, search while studying, paste a draft, and check which words or phrases connect to your source library.</p>
+    </div>
+    <nav class="top-nav" aria-label="Main sections">
+      <a href="#deadlines">Deadlines</a>
+      <a href="#goals">Goals</a>
+      <a href="#library">Library</a>
+      <a href="#checker">Source checker</a>
+      <a href="#settings">Ignore words</a>
+    </nav>
+  </header>
+
+  <main class="app-shell">
+    <section id="deadlines" class="panel">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Planning</p>
+          <h2>Deadlines</h2>
+        </div>
+        <button id="addDeadline" type="button">Add deadline</button>
+      </div>
+      <div id="deadlineList" class="cards-list"></div>
+    </section>
+
+    <section id="goals" class="panel">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Personal goals</p>
+          <h2>Goals and habits</h2>
+        </div>
+        <button id="addGoal" type="button">Add goal</button>
+      </div>
+      <div id="goalList" class="cards-list"></div>
+    </section>
+
+    <section id="library" class="panel wide-panel">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Study library</p>
+          <h2>Sources by module, unit, or block</h2>
+        </div>
+        <div class="actions-row">
+          <button id="exportData" class="ghost" type="button">Export backup</button>
+          <label class="file-button">Import backup<input id="importData" type="file" accept="application/json"></label>
+        </div>
+      </div>
+
+      <form id="sourceForm" class="source-form">
+        <label>
+          Module
+          <input id="moduleCode" type="text" placeholder="E104, K102..." required>
+        </label>
+        <label>
+          Unit / block
+          <input id="unitBlock" type="text" placeholder="Block 1, Unit 3..." required>
+        </label>
+        <label>
+          Source title
+          <input id="sourceTitle" type="text" placeholder="Article, textbook chapter, PDF title..." required>
+        </label>
+        <label>
+          Author(s)
+          <input id="sourceAuthors" type="text" placeholder="Smith, J. and Brown, A." required>
+        </label>
+        <label>
+          Year
+          <input id="sourceYear" type="text" placeholder="2024" required>
+        </label>
+        <label>
+          Publisher / website / course material
+          <input id="sourcePublisher" type="text" placeholder="Open University, journal, website...">
+        </label>
+        <label>
+          URL / file note
+          <input id="sourceUrl" type="text" placeholder="Link, DOI, or local file note">
+        </label>
+        <label>
+          Pages / location
+          <input id="sourcePages" type="text" placeholder="pp. 12–18, section 2.1...">
+        </label>
+        <label class="full-span">
+          Upload text-like file
+          <input id="sourceFile" type="file" accept=".txt,.md,.csv,.html,.htm,.json,.rtf">
+          <span class="help-text">For PDFs/Word files, paste the relevant text below until PDF/DOCX parsing is added.</span>
+        </label>
+        <label class="full-span">
+          Source text content
+          <textarea id="sourceText" rows="8" placeholder="Paste source text here so the checker can search it. More text = better matching."></textarea>
+        </label>
+        <button type="submit">Add source to library</button>
+      </form>
+
+      <div class="library-tools">
+        <label>
+          Search your source library
+          <input id="librarySearch" type="search" placeholder="Search a keyword, quote, author, module, or unit...">
+        </label>
+        <label>
+          Module filter
+          <select id="moduleFilter"><option value="">All modules</option></select>
+        </label>
+      </div>
+      <div id="sourceLibrary" class="source-library"></div>
+    </section>
+
+    <section id="checker" class="panel wide-panel">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Draft support</p>
+          <h2>Source checker</h2>
+        </div>
+        <div class="actions-row">
+          <button id="analyseDraft" type="button">Analyse draft</button>
+          <button id="clearDraft" class="ghost" type="button">Clear draft</button>
+        </div>
+      </div>
+
+      <div class="checker-layout">
+        <label>
+          Paste your draft
+          <textarea id="draftInput" rows="14" placeholder="Paste your draft here. The checker will highlight words and phrases it can connect to your source library."></textarea>
+        </label>
+        <aside class="checker-settings">
+          <label>
+            Minimum word length
+            <input id="minWordLength" type="number" min="3" max="12" value="5">
+          </label>
+          <label>
+            Match mode
+            <select id="matchMode">
+              <option value="phrase" selected>Important words + short phrases</option>
+              <option value="word">Words only</option>
+            </select>
+          </label>
+          <p class="help-text">Click a highlighted word to see matching source snippets. Use “Add citation” to add an inline Harvard-style citation and bibliography entry.</p>
+        </aside>
+      </div>
+
+      <div class="output-grid">
+        <section>
+          <h3>Highlighted draft</h3>
+          <div id="highlightedDraft" class="draft-output empty-box">Run the checker to see linked words and phrases here.</div>
+        </section>
+        <section>
+          <h3>Source match panel</h3>
+          <div id="matchPanel" class="match-panel empty-box">Select a highlighted word or phrase.</div>
+        </section>
+      </div>
+
+      <section class="generated-work">
+        <div class="section-head compact">
+          <div>
+            <h3>Draft with selected inline citations</h3>
+            <p class="help-text">This version adds citations only where you click “Add citation”.</p>
+          </div>
+          <button id="copyCitedDraft" class="ghost" type="button">Copy cited draft</button>
+        </div>
+        <textarea id="citedDraft" rows="10" readonly></textarea>
+      </section>
+
+      <section class="generated-work">
+        <div class="section-head compact">
+          <div>
+            <h3>Bibliography</h3>
+            <p class="help-text">Automatically sorted alphabetically by author/title.</p>
+          </div>
+          <button id="copyBibliography" class="ghost" type="button">Copy bibliography</button>
+        </div>
+        <div id="bibliography" class="bibliography empty-box">No selected citations yet.</div>
+      </section>
+    </section>
+
+    <section id="settings" class="panel wide-panel">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Ignore dictionary</p>
+          <h2>Words that should not become source links</h2>
+        </div>
+        <button id="resetIgnore" class="ghost" type="button">Reset default ignore words</button>
+      </div>
+      <label>
+        Ignore words, separated by commas or new lines
+        <textarea id="ignoreWords" rows="8"></textarea>
+      </label>
+      <button id="saveIgnore" type="button">Save ignore dictionary</button>
+    </section>
+  </main>
+
+  <template id="deadlineTemplate">
+    <article class="mini-card">
+      <input class="deadline-title" placeholder="Deadline title">
+      <div class="mini-row">
+        <input class="deadline-module" placeholder="Module">
+        <input class="deadline-date" type="date">
+      </div>
+      <textarea class="deadline-notes" placeholder="Notes, requirements, next step"></textarea>
+      <div class="card-actions"><button class="remove-card danger" type="button">Remove</button></div>
+    </article>
+  </template>
+
+  <template id="goalTemplate">
+    <article class="mini-card">
+      <input class="goal-title" placeholder="Goal">
+      <div class="mini-row">
+        <select class="goal-type"><option>Study</option><option>Personal</option><option>Health</option><option>Admin</option></select>
+        <select class="goal-status"><option>Not started</option><option>In progress</option><option>Done</option></select>
+      </div>
+      <textarea class="goal-notes" placeholder="Why it matters, next tiny step"></textarea>
+      <div class="card-actions"><button class="remove-card danger" type="button">Remove</button></div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
