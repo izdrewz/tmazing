@@ -15,12 +15,16 @@ A local-first university dashboard for deadlines, personal goals, module-organis
   - publisher / course material / website
   - URL or file note
   - page or section location
-  - pasted source text
-- Library search across source text, module, unit, author, title, and reference details
+  - searchable page or paragraph segments
+- Library search across source text, module, unit, author, title, page/paragraph locations, and reference details
+- PDF text extraction in the browser using PDF.js
+- DOCX text extraction in the browser using Mammoth
 - Draft source checker
 - Highlighted words and short phrases from your draft that also appear in your saved sources
 - Hover or click a highlighted word/phrase to see matching source snippets
+- Source match snippets with page or paragraph location labels
 - Add an inline Harvard-style citation from a selected source
+- Inline citations can include the source location, for example page or paragraph
 - Automatically generated bibliography, alphabetised by author/title
 - Ignore dictionary so common words like `the`, `and`, `of`, or any custom words do not become source links
 - Export/import backup as JSON
@@ -39,18 +43,21 @@ Export a backup regularly if your source library becomes important.
 4. Add sources into the library.
    - Use module codes such as `E104` or `K102`.
    - Add a unit/block such as `Block 1`, `Unit 3`, or `Week 5`.
-   - Paste the source text into the text box.
+   - Upload a PDF, DOCX, or text-like file, or paste source text manually.
 5. Search your library while studying.
 6. Paste your draft into the source checker.
 7. Click **Analyse draft**.
 8. Hover or click a highlighted word or phrase.
-9. Choose **Add citation** for the correct source.
-10. Copy the cited draft and bibliography.
+9. Check the matching source snippet and page/paragraph location.
+10. Choose **Add citation** for the correct source.
+11. Copy the cited draft and bibliography.
 
 ## File handling
 
-This first version can read text-like files directly:
+This version can read these files directly in the browser:
 
+- `.pdf`
+- `.docx`
 - `.txt`
 - `.md`
 - `.csv`
@@ -58,7 +65,9 @@ This first version can read text-like files directly:
 - `.json`
 - `.rtf`
 
-For PDF or Word files, paste the relevant text into the source text box. PDF/DOCX parsing can be added later with extra browser libraries, but it is not included yet.
+PDF files are segmented by page. DOCX and pasted/manual text are segmented by paragraph. These segments are used for search results, source snippets, and citation locators.
+
+Scanned image-only PDFs may not contain selectable text. If extraction fails, paste the useful text manually.
 
 ## About source checking
 
@@ -68,7 +77,9 @@ It is a study aid, not proof that a sentence must be cited. You still need to de
 
 ## Harvard referencing
 
-The app generates simple Harvard-style references using the source fields you provide. Always check against your university or module referencing guidance before submitting work.
+The app generates simple Harvard-style references using the source fields you provide. Inline citations can include a location such as `p. 3` or `paragraph 12`.
+
+Always check against your university or module referencing guidance before submitting work.
 
 ## GitHub Pages
 
@@ -86,11 +97,10 @@ After GitHub Pages finishes deploying, the app should be available at:
 
 ## Future upgrades that would make sense
 
-- PDF text extraction
-- Word document text extraction
-- Per-source page anchors
-- Saved folders by module/block in the UI
+- OCR for scanned PDFs
 - Better quote detection
 - Draft export to `.docx`
+- Saved module dashboards for E104, K102, and other modules
+- Tagging sources by theme/concept
 - Google Drive or OneDrive integration
 - Real database backend if you want access across devices without manual export/import
