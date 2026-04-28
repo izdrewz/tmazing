@@ -1,9 +1,10 @@
 # Tmazing Uni Hub
 
-A local-first university dashboard for deadlines, personal goals, module-organised source storage, draft source checking, Harvard-style reference support, and study-session file exports.
+A local-first university dashboard for deadlines, personal goals, module-organised source storage, draft source checking, Harvard-style reference support, module dashboards, and study-session file exports.
 
 ## What it includes
 
+- Module dashboard cards for E104, K102, and any other module codes you use
 - Deadline tracker
 - Personal goals / habits tracker
 - Source library organised by:
@@ -46,21 +47,22 @@ Export a backup regularly if your source library becomes important.
 ## How to use
 
 1. Open `index.html` in a browser.
-2. Add deadlines.
-3. Add personal goals.
-4. Add sources into the library.
+2. Use the module dashboards to see source counts, active deadlines, units/blocks, and goals by module.
+3. Add deadlines.
+4. Add personal goals.
+5. Add sources into the library.
    - Use module codes such as `E104` or `K102`.
    - Add a unit/block such as `Block 1`, `Unit 3`, or `Week 5`.
    - Upload a PDF, DOCX, or text-like file, or paste source text manually.
-5. Search your library while studying.
-6. Paste your draft into the source checker.
-7. Click **Analyse draft**.
-8. Hover or click a highlighted word or phrase.
-9. Check the matching source snippet and page/paragraph location.
-10. Choose **Add citation** for the correct source.
-11. Copy the cited draft and bibliography.
-12. Use **End session** when you finish studying.
-13. Review/edit the compiled session notes, name the files, choose whether sources should be kept, merged, or deleted, then save the downloaded session files.
+6. Search your library while studying.
+7. Paste your draft into the source checker.
+8. Click **Analyse draft**.
+9. Hover or click a highlighted word or phrase.
+10. Check the matching source snippet and page/paragraph location.
+11. Choose **Add citation** for the correct source.
+12. Copy the cited draft and bibliography.
+13. Use **End session** when you finish studying.
+14. Review/edit the compiled session notes, name the files, choose whether sources should be kept, merged, or deleted, then save the downloaded session files.
 
 ## End-session file workflow
 
@@ -129,7 +131,6 @@ After GitHub Pages finishes deploying, the app should be available at:
 - OCR for scanned PDFs
 - Better quote detection
 - Draft export to `.docx`
-- Saved module dashboards for E104, K102, and other modules
 - Tagging sources by theme/concept
 - Google Drive or OneDrive integration
 - Real database backend if you want access across devices without manual export/import
