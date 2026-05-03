@@ -36,33 +36,33 @@ body {
   color: var(--ink);
   background:
     linear-gradient(90deg,
-      transparent 0 .45rem,
-      var(--deep-plum) .45rem .9rem,
-      var(--dusty-mauve) .9rem 1.35rem,
-      var(--eucalyptus) 1.35rem 1.8rem,
-      var(--vintage-gold) 1.8rem 2.25rem,
-      var(--duck-egg-blue) 2.25rem 2.7rem,
-      transparent 2.7rem calc(100% - 2.7rem),
-      var(--deep-plum) calc(100% - 2.7rem) calc(100% - 2.25rem),
-      var(--dusty-mauve) calc(100% - 2.25rem) calc(100% - 1.8rem),
-      var(--eucalyptus) calc(100% - 1.8rem) calc(100% - 1.35rem),
-      var(--vintage-gold) calc(100% - 1.35rem) calc(100% - .9rem),
-      var(--duck-egg-blue) calc(100% - .9rem) calc(100% - .45rem),
-      transparent calc(100% - .45rem)),
+      transparent 0 .18rem,
+      var(--deep-plum) .18rem .55rem,
+      var(--dusty-mauve) .55rem .92rem,
+      var(--eucalyptus) .92rem 1.29rem,
+      var(--vintage-gold) 1.29rem 1.66rem,
+      var(--duck-egg-blue) 1.66rem 2.03rem,
+      transparent 2.03rem calc(100% - 2.03rem),
+      var(--deep-plum) calc(100% - 2.03rem) calc(100% - 1.66rem),
+      var(--dusty-mauve) calc(100% - 1.66rem) calc(100% - 1.29rem),
+      var(--eucalyptus) calc(100% - 1.29rem) calc(100% - .92rem),
+      var(--vintage-gold) calc(100% - .92rem) calc(100% - .55rem),
+      var(--duck-egg-blue) calc(100% - .55rem) calc(100% - .18rem),
+      transparent calc(100% - .18rem)),
     linear-gradient(180deg,
-      transparent 0 .45rem,
-      var(--deep-plum) .45rem .9rem,
-      var(--dusty-mauve) .9rem 1.35rem,
-      var(--eucalyptus) 1.35rem 1.8rem,
-      var(--vintage-gold) 1.8rem 2.25rem,
-      var(--duck-egg-blue) 2.25rem 2.7rem,
-      transparent 2.7rem calc(100% - 2.7rem),
-      var(--deep-plum) calc(100% - 2.7rem) calc(100% - 2.25rem),
-      var(--dusty-mauve) calc(100% - 2.25rem) calc(100% - 1.8rem),
-      var(--eucalyptus) calc(100% - 1.8rem) calc(100% - 1.35rem),
-      var(--vintage-gold) calc(100% - 1.35rem) calc(100% - .9rem),
-      var(--duck-egg-blue) calc(100% - .9rem) calc(100% - .45rem),
-      transparent calc(100% - .45rem)),
+      transparent 0 .18rem,
+      var(--deep-plum) .18rem .55rem,
+      var(--dusty-mauve) .55rem .92rem,
+      var(--eucalyptus) .92rem 1.29rem,
+      var(--vintage-gold) 1.29rem 1.66rem,
+      var(--duck-egg-blue) 1.66rem 2.03rem,
+      transparent 2.03rem calc(100% - 2.03rem),
+      var(--deep-plum) calc(100% - 2.03rem) calc(100% - 1.66rem),
+      var(--dusty-mauve) calc(100% - 1.66rem) calc(100% - 1.29rem),
+      var(--eucalyptus) calc(100% - 1.29rem) calc(100% - .92rem),
+      var(--vintage-gold) calc(100% - .92rem) calc(100% - .55rem),
+      var(--duck-egg-blue) calc(100% - .55rem) calc(100% - .18rem),
+      transparent calc(100% - .18rem)),
     var(--cream-mushroom) !important;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -70,7 +70,7 @@ body {
 body::before {
   content: "";
   position: fixed;
-  inset: .45rem;
+  inset: .12rem;
   pointer-events: none;
   border: 3px solid var(--deep-plum);
   border-radius: 0;
@@ -85,12 +85,12 @@ body::before {
 
 .hero,
 .app-shell {
-  padding-left: 2.95rem !important;
-  padding-right: 2.95rem !important;
+  padding-left: 2.35rem !important;
+  padding-right: 2.35rem !important;
 }
 
 .hero {
-  padding-top: 2.95rem;
+  padding-top: 2.35rem;
   align-items: stretch;
 }
 
@@ -105,13 +105,14 @@ body::before {
 .hero > div:first-child {
   flex: 1 1 auto;
   border-radius: 10px;
-  padding: 1rem 1.45rem;
+  padding: .85rem 1.3rem 1rem;
   background: linear-gradient(90deg, var(--duck-egg-blue), var(--grey-cornflower)) !important;
 }
 
 .hero .eyebrow {
   color: var(--deep-plum);
   letter-spacing: .12em;
+  margin-bottom: .2rem;
 }
 
 .hero h1 {
@@ -119,16 +120,19 @@ body::before {
   font-style: italic;
   font-weight: 500;
   letter-spacing: -.075em;
-  line-height: .82;
+  line-height: .88;
   color: #09070a;
   text-shadow: 0 1px 0 rgba(255, 248, 236, .35);
-  font-size: clamp(4.4rem, 13vw, 12rem);
+  font-size: clamp(3.6rem, 8vw, 7.2rem);
+  margin: .05rem 0 .45rem;
 }
 
 .subtitle {
   color: var(--deep-plum);
   font-weight: 700;
   max-width: 1180px;
+  line-height: 1.25;
+  margin-top: .35rem;
 }
 
 .top-nav {
@@ -461,31 +465,36 @@ mark {
   body {
     background:
       linear-gradient(90deg,
-        transparent 0 .35rem,
-        var(--deep-plum) .35rem .65rem,
-        var(--dusty-mauve) .65rem .95rem,
-        var(--eucalyptus) .95rem 1.25rem,
-        transparent 1.25rem calc(100% - 1.25rem),
-        var(--deep-plum) calc(100% - 1.25rem) calc(100% - .95rem),
-        var(--dusty-mauve) calc(100% - .95rem) calc(100% - .65rem),
-        var(--eucalyptus) calc(100% - .65rem) calc(100% - .35rem),
-        transparent calc(100% - .35rem)),
+        transparent 0 .12rem,
+        var(--deep-plum) .12rem .42rem,
+        var(--dusty-mauve) .42rem .72rem,
+        var(--eucalyptus) .72rem 1.02rem,
+        transparent 1.02rem calc(100% - 1.02rem),
+        var(--deep-plum) calc(100% - 1.02rem) calc(100% - .72rem),
+        var(--dusty-mauve) calc(100% - .72rem) calc(100% - .42rem),
+        var(--eucalyptus) calc(100% - .42rem) calc(100% - .12rem),
+        transparent calc(100% - .12rem)),
       var(--cream-mushroom) !important;
   }
 
   body::before {
-    inset: .35rem;
+    inset: .1rem;
     border-width: 2px;
   }
 
   .hero,
   .app-shell {
-    padding-left: 1.45rem !important;
-    padding-right: 1.45rem !important;
+    padding-left: 1.05rem !important;
+    padding-right: 1.05rem !important;
   }
 
   .hero {
-    padding-top: 1.45rem;
+    padding-top: 1.05rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.2rem, 16vw, 5.8rem);
+    line-height: .9;
   }
 
   .word-review-grid,
