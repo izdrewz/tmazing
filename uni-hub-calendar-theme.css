@@ -187,7 +187,8 @@ button:hover,
 .section-head h2,
 .section-head h3,
 .source-card h3,
-.match-title {
+.match-title,
+.source-overlap-panel h3 {
   font-family: Georgia, "Times New Roman", serif;
   color: var(--deep-plum);
   letter-spacing: -.015em;
@@ -285,7 +286,8 @@ button:focus-visible,
 }
 
 .reference-word-panel,
-.found-source-links {
+.found-source-links,
+.source-overlap-panel {
   margin-top: 1rem;
   background:
     linear-gradient(90deg, var(--deep-plum) 0 .7rem, var(--dusty-mauve) .7rem 1.4rem, transparent 1.4rem),
@@ -295,7 +297,8 @@ button:focus-visible,
   padding: 1rem 1rem 1rem 2rem;
 }
 
-.reference-word-panel .section-head {
+.reference-word-panel .section-head,
+.source-overlap-panel .section-head {
   margin-bottom: .65rem;
 }
 
@@ -307,18 +310,49 @@ button:focus-visible,
 
 .repeated-word-list,
 .thesaurus-box,
-.found-link-list {
+.found-link-list,
+.source-overlap-list {
   display: grid;
   gap: .55rem;
 }
 
 .repeated-word-card,
 .thesaurus-result,
-.found-link-card {
+.found-link-card,
+.source-overlap-card {
   border: 2px solid rgba(75, 13, 39, .30);
   background: rgba(205, 180, 192, .22);
   border-radius: 12px;
   padding: .7rem;
+}
+
+.source-overlap-card.needs-cite {
+  border-left: .7rem solid var(--red-plum) !important;
+}
+
+.source-overlap-card.is-cited {
+  border-left: .7rem solid var(--cool-sage) !important;
+}
+
+.overlap-head {
+  display: flex;
+  justify-content: space-between;
+  gap: .75rem;
+  align-items: center;
+  color: var(--deep-plum);
+  font-weight: 900;
+}
+
+.overlap-head span {
+  border-radius: 999px;
+  padding: .18rem .55rem;
+  background: var(--paper-cream);
+  border: 1px solid rgba(75,13,39,.28);
+  font-size: .78rem;
+}
+
+.overlap-draft {
+  margin: .45rem 0;
 }
 
 .repeated-word-card {
@@ -404,7 +438,8 @@ button:focus-visible,
 
 .word-actions button,
 .thesaurus-box button,
-.found-link-card button {
+.found-link-card button,
+.source-overlap-card button {
   padding: .45rem .7rem !important;
   font-size: .78rem !important;
 }
