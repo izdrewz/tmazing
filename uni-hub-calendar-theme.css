@@ -276,7 +276,8 @@ button:focus-visible,
   background: rgba(170, 181, 158, .55) !important;
 }
 
-.reference-word-panel {
+.reference-word-panel,
+.found-source-links {
   margin-top: 1rem;
   background:
     linear-gradient(90deg, var(--deep-plum) 0 .7rem, var(--dusty-mauve) .7rem 1.4rem, transparent 1.4rem),
@@ -297,13 +298,15 @@ button:focus-visible,
 }
 
 .repeated-word-list,
-.thesaurus-box {
+.thesaurus-box,
+.found-link-list {
   display: grid;
   gap: .55rem;
 }
 
 .repeated-word-card,
-.thesaurus-result {
+.thesaurus-result,
+.found-link-card {
   border: 2px solid rgba(75, 13, 39, .30);
   background: rgba(205, 180, 192, .22);
   border-radius: 12px;
@@ -322,10 +325,39 @@ button:focus-visible,
   align-items: center;
 }
 
-.repeated-word-head strong {
+.repeated-word-head strong,
+.found-link-card h4 {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.1rem;
   color: var(--deep-plum);
+}
+
+.found-source-links summary {
+  cursor: pointer;
+  font-weight: 900;
+  color: var(--deep-plum);
+}
+
+.found-link-card {
+  display: grid;
+  gap: .35rem;
+  word-break: break-word;
+}
+
+.found-link-card h4,
+.found-link-card p {
+  margin: 0;
+}
+
+.found-link-card a {
+  color: var(--red-plum);
+  font-weight: 850;
+}
+
+.found-link-note {
+  color: var(--muted);
+  font-size: .86rem;
+  line-height: 1.45;
 }
 
 .word-count-chip {
@@ -363,7 +395,8 @@ button:focus-visible,
 }
 
 .word-actions button,
-.thesaurus-box button {
+.thesaurus-box button,
+.found-link-card button {
   padding: .45rem .7rem !important;
   font-size: .78rem !important;
 }
