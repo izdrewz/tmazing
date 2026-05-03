@@ -94,7 +94,7 @@
   function moduleTitle(source) {
     const parent = parentOf(source);
     const module = clean(source?.module || parent?.module);
-    const title = clean(parent?.publisher || source?.publisher || parent?.moduleTitle || parent?.title || "Module material");
+    const title = clean(parent?.publisher || parent?.moduleTitle || source?.publisher || "The Open University");
     if (module && title && title !== module) return `${module}: ${stripStop(title)}`;
     return module || stripStop(title);
   }
@@ -169,20 +169,10 @@
       const parenthetical = parseParentheticalReference(line, rawUrl);
       const context = clean(lines.slice(Math.max(0, i - 1), Math.min(lines.length, i + 2)).join(" ")).slice(0, 850);
       if (parenthetical) {
-        return {
-          title: parenthetical.title,
-          authors: parenthetical.author,
-          subheading: currentHeading,
-          note: context
-        };
+        return { title: parenthetical.title, authors: parenthetical.author, subheading: currentHeading, note: context };
       }
       const cleanLine = clean(line.replace(URL_RE, " ").replace(DOI_RE, " ")).replace(/[,:;\-–—\s]+$/g, "");
-      return {
-        title: cleanLine || currentHeading,
-        authors: isOUUrl(rawUrl) ? "The Open University" : "",
-        subheading: currentHeading,
-        note: context
-      };
+      return { title: cleanLine || currentHeading, authors: isOUUrl(rawUrl) ? "The Open University" : "", subheading: currentHeading, note: context };
     }
     return null;
   }
@@ -201,19 +191,14 @@
         if (parsed.title && source.title !== parsed.title) { source.title = parsed.title; changed = true; }
         if (parsed.authors && source.authors !== parsed.authors) { source.authors = parsed.authors; changed = true; }
         if (parsed.note && source.text !== parsed.note) { source.text = parsed.note; changed = true; }
-        source.segments = [{
-          id: source.segments?.[0]?.id || id(),
-          location: parsed.subheading || source.unit || "Sub-source",
-          citationLocator: "",
-          text: parsed.note || source.text || source.url || ""
-        }];
+        source.segments = [{ id: source.segments?.[0]?.id || id(), location: parsed.subheading || source.unit || "Sub-source", citationLocator: "", text: parsed.note || source.text || source.url || "" }];
         changed = true;
       }
       if (isOUUrl(source.url)) {
         if (source.sourceType !== "module") { source.sourceType = "module"; changed = true; }
         if (!source.authors || /learn2\.open\.ac\.uk/i.test(source.authors)) { source.authors = "The Open University"; changed = true; }
         if ((!source.year || /^no date$/i.test(source.year)) && parent.year) { source.year = parent.year; changed = true; }
-        if (!source.publisher && parent.publisher) { source.publisher = parent.publisher; changed = true; }
+        if (!source.publisher) { source.publisher = "The Open University"; changed = true; }
       } else {
         if (source.sourceType !== "webpage") { source.sourceType = "webpage"; changed = true; }
         if (!source.year) { source.year = "no date"; changed = true; }
