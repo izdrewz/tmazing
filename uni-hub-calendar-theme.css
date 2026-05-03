@@ -320,14 +320,69 @@ button:focus-visible,
   gap: .55rem;
 }
 
+.found-link-groups,
+.sub-source-groups {
+  display: grid;
+  gap: .9rem;
+}
+
+.found-link-group,
+.sub-source-group {
+  border: 2px solid rgba(75, 13, 39, .22);
+  border-radius: 12px;
+  background: rgba(255, 248, 236, .48);
+  padding: .65rem;
+}
+
+.found-link-group > h4,
+.sub-source-group > h4 {
+  margin: 0 0 .5rem;
+  color: var(--deep-plum);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+}
+
 .repeated-word-card,
 .thesaurus-result,
 .found-link-card,
-.source-overlap-card {
+.source-overlap-card,
+.sub-source-card {
   border: 2px solid rgba(75, 13, 39, .30);
   background: rgba(205, 180, 192, .22);
   border-radius: 12px;
   padding: .7rem;
+}
+
+.sub-source-card {
+  display: grid;
+  gap: .35rem;
+  background: rgba(139, 184, 204, .16);
+}
+
+.parent-sub-sources {
+  margin-top: .75rem;
+  border: 2px solid rgba(75, 13, 39, .28);
+  border-radius: 12px;
+  padding: .6rem;
+  background: rgba(170, 181, 158, .16);
+}
+
+.parent-sub-sources summary {
+  cursor: pointer;
+  color: var(--deep-plum);
+  font-weight: 900;
+}
+
+.sub-source-parent-note {
+  display: inline-flex;
+  width: fit-content;
+  border-radius: 999px;
+  padding: .18rem .55rem;
+  margin: 0 0 .45rem;
+  background: var(--cool-sage);
+  color: var(--deep-plum);
+  font-weight: 900;
+  font-size: .78rem;
 }
 
 .source-overlap-card.needs-cite {
@@ -372,10 +427,13 @@ button:focus-visible,
 }
 
 .repeated-word-head strong,
-.found-link-card h4 {
+.found-link-card h4,
+.found-link-title {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.1rem;
   color: var(--deep-plum);
+  font-weight: 800;
+  margin: 0;
 }
 
 .found-source-links summary {
@@ -395,7 +453,8 @@ button:focus-visible,
   margin: 0;
 }
 
-.found-link-card a {
+.found-link-card a,
+.sub-source-card a {
   color: var(--red-plum);
   font-weight: 850;
 }
@@ -443,7 +502,8 @@ button:focus-visible,
 .word-actions button,
 .thesaurus-box button,
 .found-link-card button,
-.source-overlap-card button {
+.source-overlap-card button,
+.sub-source-card button {
   padding: .45rem .7rem !important;
   font-size: .78rem !important;
 }
