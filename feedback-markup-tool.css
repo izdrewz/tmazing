@@ -44,6 +44,45 @@
   color: var(--fm-cream) !important;
 }
 
+.feedback-repo-reminder {
+  display: grid;
+  grid-template-columns: auto minmax(220px, 1fr) auto auto;
+  gap: .65rem;
+  align-items: center;
+  border: 3px solid var(--fm-plum);
+  border-radius: 12px;
+  background:
+    linear-gradient(90deg, rgba(184, 134, 43, .24), rgba(139, 184, 204, .20)),
+    var(--fm-cream);
+  padding: .72rem;
+  margin: -.3rem 0 1rem;
+}
+
+.feedback-repo-reminder strong {
+  color: var(--fm-plum);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+}
+
+.feedback-repo-reminder span {
+  color: #4f3d45;
+  font-size: .88rem;
+  line-height: 1.35;
+}
+
+.feedback-repo-reminder code {
+  background: rgba(255, 248, 236, .74);
+  border: 1px solid rgba(75, 13, 39, .22);
+  border-radius: .3rem;
+  padding: .05rem .22rem;
+  color: var(--fm-plum);
+}
+
+#feedbackRepoReminderStatus {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
 .feedback-grid {
   display: grid;
   grid-template-columns: minmax(290px, .78fr) minmax(0, 1.22fr);
@@ -253,7 +292,8 @@
 
 @media (max-width: 900px) {
   .feedback-grid,
-  .feedback-form-grid {
+  .feedback-form-grid,
+  .feedback-repo-reminder {
     grid-template-columns: 1fr;
   }
 
